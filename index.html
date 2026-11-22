@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>酒店利润计算器</title><style>
+:root{--ink:#203d34;--muted:#77847b;--accent:#235b48;--paper:#f5f4ee;--line:#e1e5db}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible{outline:3px solid #96bba5;outline-offset:4px}.wrap{max-width:1120px;margin:auto;padding:32px}.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:25px;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:700}.logo{background:var(--accent);color:#fff;border-radius:12px;width:40px;height:40px;display:grid;place-items:center;font-size:23px}.offline{font-size:12px;color:var(--muted)}.offline:before{content:"";display:inline-block;width:6px;height:6px;background:#4e8c67;border-radius:50%;margin-right:8px}.intro{margin:42px 0 28px}.eyebrow{letter-spacing:3px;font-size:11px;color:var(--muted);font-weight:700}h1{font-size:38px;letter-spacing:-1px;margin:12px 0} .intro p{color:var(--muted);font-size:14px;line-height:1.8}.workspace{display:grid;grid-template-columns:1.15fr 1fr;gap:24px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:0 8px 30px #233c3210}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.section-head h2{margin:0;font-size:17px}.step{font-size:11px;letter-spacing:2px;color:#91a094}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}.tab{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--line);border-radius:15px;background:#fff;padding:16px;color:var(--ink)}.tab.active{background:#eff5ee;border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.tab span{font-size:21px}.tab b{font-size:15px;display:block}.tab small{display:block;color:var(--muted);font-size:10px;margin-top:5px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field:last-child{grid-column:1/-1}label{display:block;font-size:13px;font-weight:600;margin-bottom:9px}.input{display:flex;align-items:center;border:1px solid var(--line);border-radius:12px;background:#fafbf8;height:56px}.input:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px #235b4810}.input span{color:#839487;padding:0 15px}.input input{min-width:0;width:100%;border:0;background:none;outline:none;color:var(--ink);font-size:19px;padding-right:14px;font-variant-numeric:tabular-nums}.input input::placeholder{font-size:13px;color:#a7b0a7}.error{min-height:22px;font-size:11px;color:#b8413f;padding-top:5px}.invalid .input{border-color:#b8413f}.actions{display:flex;gap:12px;margin-top:8px}.primary{flex:1;background:var(--accent);border:0;border-radius:12px;color:white;padding:17px;font-weight:600}.clear{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 23px;color:var(--muted)}.primary:hover{filter:brightness(1.1)}.result{background:#eaf0e5;display:flex;flex-direction:column;min-height:440px;border-color:#dbe3d4;position:relative;overflow:hidden}.result:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #cbd8c2;border-radius:50%;right:-120px;top:100px;pointer-events:none}.badge{font-size:11px;padding:6px 10px;background:#ffffff8a;border-radius:20px}.amount{margin:45px 0 12px;font-size:48px;font-weight:650;letter-spacing:-2px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums;position:relative;z-index:1}.amount.empty{color:#a3b19c}.note{font-size:13px;color:var(--muted);margin:0 0 30px;line-height:1.7}.formula{margin-top:auto;border-top:1px solid #ccd8c4;padding-top:22px}.formula small{font-size:10px;letter-spacing:2px;color:#6f8068}.formula p{font-size:13px;line-height:1.9}.positive{color:#1d7650}.negative{color:#ba4940}.foot{display:flex;justify-content:space-between;color:#96a092;font-size:11px;margin:24px 0}.tip{margin-top:20px;font-size:11px;color:#96a092;text-align:center}@media(max-width:750px){.wrap{padding:22px 16px}.intro{margin:26px 0 24px}h1{font-size:29px}.workspace{grid-template-columns:1fr;gap:18px}.card{padding:24px;border-radius:20px}.result{min-height:285px}.amount{margin:20px 0 10px;font-size:40px}.nav{padding-bottom:18px}.offline{font-size:10px}.foot{gap:10px;line-height:1.6}.brand{font-size:14px}}@media(max-width:360px){.fields{grid-template-columns:1fr}.tab{padding:12px}.card{padding:18px}}
+</style></head>
+<body><main class="wrap">
+<header class="nav"><div class="brand"><span class="logo">¥</span>酒店利润计算器</div><span class="offline">本地计算 · 数据不上传</span></header>
+<section class="intro"><div class="eyebrow">HOTEL PROFIT CALCULATOR</div><h1>每一笔利润，清晰有数。</h1><p>选择酒店框架，输入价格与参数，轻松算出本次利润。</p></section>
+<div class="workspace"><section class="card"><div class="section-head"><h2>开始测算</h2><span class="step">01 / INPUT</span></div>
+<div class="tabs" role="tablist" aria-label="酒店框架"><button class="tab active" id="huazhu" role="tab" aria-selected="true"><span>华</span><div><b>华住会</b><small>价差 × 3 × x</small></div></button><button class="tab" id="jinjiang" role="tab" aria-selected="false"><span>锦</span><div><b>锦江</b><small>价差 × x</small></div></button></div>
+<form id="form" novalidate><div class="fields"><div class="field" id="officialField"><label for="official">官方价格</label><div class="input"><span>¥</span><input id="official" type="text" inputmode="decimal" autocomplete="off" placeholder="例如 500" aria-describedby="officialError"></div><div id="officialError" class="error" aria-live="polite"></div></div><div class="field" id="otaField"><label for="ota">OTA 价格</label><div class="input"><span>¥</span><input id="ota" type="text" inputmode="decimal" autocomplete="off" placeholder="例如 400" aria-describedby="otaError"></div><div id="otaError" class="error" aria-live="polite"></div></div><div class="field" id="xField"><label for="x">参数 x</label><div class="input"><span>×</span><input id="x" type="text" inputmode="decimal" autocomplete="off" placeholder="例如 6" aria-describedby="xError"></div><div id="xError" class="error" aria-live="polite"></div></div></div><div class="actions"><button type="submit" class="primary">计算利润　↗</button><button type="button" id="clear" class="clear">清空</button></div></form><div class="tip">支持整数与小数 · 参数 x 必须大于 0</div></section>
+<section class="card result" aria-live="polite"><div class="section-head"><h2>预计利润</h2><span id="badge" class="badge">华住会</span></div><div id="amount" class="amount empty">¥ —</div><p id="note" class="note">填写左侧数据，点击计算<br>结果会显示在这里。</p><div class="formula"><small>计算公式 / FORMULA</small><p id="formula"></p></div></section></div>
+<footer class="foot"><span>简单输入，精确到分。</span><span>经典公式 · 界面升级版 1.3.0</span></footer></main>
+<script>const DECIMAL_PATTERN = /^(?:\d+(?:\.\d*)?|\.\d+)$/;
+
+function pow10(power) {
+  return 10n ** BigInt(power);
+}
+
+function parseDecimal(value) {
+  const [whole = "0", fraction = ""] = value.split(".");
+  const digits = `${whole || "0"}${fraction}`;
+  return { coefficient: BigInt(digits), scale: fraction.length };
+}
+
+function align(left, right) {
+  const scale = Math.max(left.scale, right.scale);
+  return {
+    left: left.coefficient * pow10(scale - left.scale),
+    right: right.coefficient * pow10(scale - right.scale),
+    scale,
+  };
+}
+
+function subtract(left, right) {
+  const aligned = align(left, right);
+  return { coefficient: aligned.left - aligned.right, scale: aligned.scale };
+}
+
+function multiply(left, right) {
+  return {
+    coefficient: left.coefficient * right.coefficient,
+    scale: left.scale + right.scale,
+  };
+}
+
+function roundToCents(decimal) {
+  if (decimal.scale <= 2) {
+    return decimal.coefficient * pow10(2 - decimal.scale);
+  }
+
+  const divisor = pow10(decimal.scale - 2);
+  let cents = decimal.coefficient / divisor;
+  const remainder = decimal.coefficient % divisor;
+  const absoluteRemainder = remainder < 0n ? -remainder : remainder;
+  if (absoluteRemainder * 2n >= divisor) {
+    cents += decimal.coefficient < 0n ? -1n : 1n;
+  }
+  return cents;
+}
+
+function validateDecimal(raw, label, positiveOnly = false) {
+  const value = raw.trim();
+  if (!value) return { error: `${label}不能为空` };
+  if (value.startsWith("-")) return { error: `${label}不能为负数` };
+  if (!DECIMAL_PATTERN.test(value)) {
+    return { error: `${label}格式不正确，请输入整数或小数` };
+  }
+  if (positiveOnly && parseDecimal(value).coefficient <= 0n) {
+    return { error: "参数 x 必须大于 0" };
+  }
+  return { value };
+}
+
+function calculateProfit(framework, official, ota, x) {
+  const priceDifference = subtract(parseDecimal(official), parseDecimal(ota));
+  const frameworkFactor = parseDecimal(framework === "huazhu" ? "3" : "1");
+  const multiplied = multiply(multiply(priceDifference, frameworkFactor), parseDecimal(x));
+  return roundToCents(subtract(multiplied, parseDecimal(official)));
+}
+
+function formatCurrency(cents) {
+  const negative = cents < 0n;
+  const absolute = negative ? -cents : cents;
+  const whole = absolute / 100n;
+  const fraction = (absolute % 100n).toString().padStart(2, "0");
+  return `${negative ? "-" : ""}¥${whole}.${fraction}`;
+}
+
+let framework="huazhu";const $=id=>document.getElementById(id);
+function reset(){for(const id of ["official","ota","x"]){$(id).value="";$(id+"Error").textContent="";$(id+"Field").classList.remove("invalid");$(id).removeAttribute("aria-invalid")}resetResult()}
+function resetResult(){$("amount").textContent="¥ —";$("amount").className="amount empty";$("note").textContent="填写价格与参数，点击计算即可查看利润。"}
+function choose(next){framework=next;for(const id of ["huazhu","jinjiang"]){$(id).classList.toggle("active",id===next);$(id).setAttribute("aria-selected",String(id===next))}$("badge").textContent=next==="huazhu"?"华住会":"锦江";$("formula").textContent="利润 =（官方价格 − OTA 价格）"+(next==="huazhu"?"× 3 × x":"× x")+" − 官方价格";reset()}
+$("huazhu").onclick=()=>choose("huazhu");$("jinjiang").onclick=()=>choose("jinjiang");$("clear").onclick=reset;
+for(const id of ["official","ota","x"])$(id).addEventListener("input",()=>{resetResult();$(id+"Error").textContent="";$(id+"Field").classList.remove("invalid");$(id).removeAttribute("aria-invalid")});
+$("form").onsubmit=e=>{e.preventDefault();const ids=["official","ota","x"],labels=["官方价格","OTA 价格","参数 x"];const checks=ids.map((id,i)=>validateDecimal($(id).value,labels[i],id==="x"));checks.forEach((c,i)=>{$(ids[i]+"Error").textContent=c.error||"";$(ids[i]+"Field").classList.toggle("invalid",!!c.error);$(ids[i]).setAttribute("aria-invalid",String(!!c.error))});const bad=checks.findIndex(c=>c.error);if(bad>=0){resetResult();$(ids[bad]).focus();return}const result=calculateProfit(framework,...checks.map(c=>c.value));$("amount").textContent=formatCurrency(result);$("amount").className="amount "+(result>0n?"positive":result<0n?"negative":"");$("note").textContent=result>0n?"本次测算为正利润。":result<0n?"本次测算为负利润，请留意价格与参数。":"本次测算利润为零。"};choose("huazhu");
+</script></body></html>
